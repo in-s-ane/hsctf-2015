@@ -1,0 +1,9 @@
+it is a vigenere like self-encrypting thingy, with the key for each letter of
+the plaintet being the letter preceding and the first letter in the key is 'a',
+just run the Vigenere class, and you'll get this:
+
+hello keith this is a big block of text to make it easier to decrypt for you
+this part is only here to add words using up space words stuff how are you i
+am great hope to see you soon by the way the flag is cryptoisgreat
+
+when you add in the spaces, so the flag is "cryptoisgreat"

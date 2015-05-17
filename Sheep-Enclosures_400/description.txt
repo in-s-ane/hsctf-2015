@@ -1,0 +1,23 @@
+Keith built an enclosure for his longtime companion, Daisy the Round and Fluffy Sheep.  The enclosure is a polygon that is not self-intersecting, but is not necessarily convex.  
+
+Daisy daydreams about rubber bands.  Really, really, big rubber bands.  One day, she wonders: if a very long rubber band is pulled around her enclosure and allowed to snap taut, what will be the area enclosed between the enclosure's fence and the rubber band? 
+
+Input format:
+A sequence of at most 1000 pairs of integers X,Y (-40,000<=X,Y<=40,000) representing the vertices of Daisy's enclosure, in order in the xy plane.
+
+The flag is the area between the fence and rubber band for the input file provided. The flag is guaranteed to be a 32-bit integer. 
+
+Example 1 input:
+0 0
+1 0
+0 1
+
+Example 1 flag: 0
+
+Example 2 input:
+0 0
+1 -1
+0 1
+-1 -1
+
+Example 2 flag: 1

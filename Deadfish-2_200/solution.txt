@@ -1,0 +1,9 @@
+EZPZ :D 
+
+iiss = ((0 + 1 + 1) ** 2) ** 2 = 16
+
+The accumulator resets to 0 when it is equal to 256, so square 16 first (s), then
+add 2 (ii), then square that to 4 (s), then add 1 (i), and finally output it
+(o).
+
+Flag: siisio

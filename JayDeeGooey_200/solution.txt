@@ -1,0 +1,5 @@
+As usual, we go to http://www.javadecompilers.com to decompile thos thing, then
+we can see that this is a bi-directional substitution cipher. It checks if the
+encryption of the entry is equal to the string "ichvjnvtsaftpgfkoevk". We simply
+enter that string into the encryption to get what would encrypt to it, which is
+"jdguimustbesohelpful" which is the flag

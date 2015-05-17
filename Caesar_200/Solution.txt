@@ -1,0 +1,8 @@
+first go to http://www.javadecompilers.com to decompile the .class file, then as
+we can see on line 17, we just need the rot-5 of the plaintext (flag) to be
+"nijxtkrfwhmjyyzgwzyj"...
+
+So we just rot-21 that ciphertext and we get:
+idesofmarchettubrute
+
+which is the flag

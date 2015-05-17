@@ -1,0 +1,12 @@
+Go to his password site:
+http://104.236.80.67/KeithsMoreSecureBlog/passwordhere.php
+Change your User Agent to completely blank.
+
+It will display the login info:
+
+Keith:keithistheking27332
+
+Login:
+
+The flag is..... awnedrrdenwa 
+

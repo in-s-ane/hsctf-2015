@@ -1,0 +1,14 @@
+Befunge!
+
+>&&*.@
+
+> -- Start of code
+& -- Take 1 integer user input and push to stack
+& -- Take 1 integer user input and push to stack
+* -- Take the top 2 stack elements, multiply them, then put on top of stack
+. -- Pop the top element, then print out as integer
+@ -- End of code
+
+$ nc 104.236.80.67 5677
+>&&*.@
+Nice! The flag is 'I can has Befunge, can't I?'

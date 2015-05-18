@@ -1,0 +1,6 @@
+In the year 2100CE Keith is attempting to time travel to the year 1BCE with his cronogex machine. To work you give the machine a regex matching every year you want to skip, everytime you use the machine the regex needs to be shorter than the last time. Not knowing this Keith already made a regex 14 characters long. Find a regex for all years between 0CE(Its date in the future) and 2099CE (inclusive) and that is shorter than 14 charecters. Your regex should only accept 4 numerals such as 0001 or 0201 not 1 or 201. The only input will be numbers.
+
+Regex: ([01]\d|20)\d.
+
+This solution doesn't actually work since someone can put a character into the 4th spot and the regex will still succeed. But the server accepted it so we'll let that fly ;)
+A better solution should be worked on

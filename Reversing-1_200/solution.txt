@@ -1,0 +1,12 @@
+In the output of `objdump -d reversing1`, we can see that there is a direct check of the value of the given input.
+
+0x0000000000400582 <+62>:  callq  0x400450 <strtol@plt>
+0x0000000000400587 <+67>:  mov    %eax,-0x4(%rbp)
+0x000000000040058a <+70>:  cmpl   $0x989687,-0x4(%rbp)
+0x0000000000400591 <+77>:  jne    0x40059f <main+91>
+
+The inputted string is first converted to a number and then compared with 0x989687. Converting 0x989687 to base 10, we get the correct input as 10000007.
+
+> nc 104.236.80.67 5688
+10000007
+Ay, you got it. Here's the flag: reversing_engineering_is_more_fun_than_engineering

@@ -1,0 +1,45 @@
+I probably did not solve this the correct way because I never actually figured
+out why the segfault occurs. :\
+
+Looking at the output of `objdump -d kernel_main`, we notice the following:
+
+  100054:	83 c4 10             	add    $0x10,%esp
+  100057:	c6 45 ea 4b          	movb   $0x4b,-0x16(%ebp)
+  10005b:	c6 45 eb 33          	movb   $0x33,-0x15(%ebp)
+  10005f:	c6 45 ec 72          	movb   $0x72,-0x14(%ebp)
+  100063:	c6 45 ed 4e          	movb   $0x4e,-0x13(%ebp)
+  100067:	c6 45 ee 33          	movb   $0x33,-0x12(%ebp)
+  10006b:	c6 45 ef 6c          	movb   $0x6c,-0x11(%ebp)
+  10006f:	c6 45 f0 73          	movb   $0x73,-0x10(%ebp)
+  100073:	c6 45 f1 20          	movb   $0x20,-0xf(%ebp)
+  100077:	c6 45 f2 52          	movb   $0x52,-0xe(%ebp)
+  10007b:	c6 45 f3 20          	movb   $0x20,-0xd(%ebp)
+  10007f:	c6 45 f4 43          	movb   $0x43,-0xc(%ebp)
+  100083:	c6 45 f5 30          	movb   $0x30,-0xb(%ebp)
+  100087:	c6 45 f6 30          	movb   $0x30,-0xa(%ebp)
+  10008b:	c6 45 f7 4c          	movb   $0x4c,-0x9(%ebp)
+  10008f:	83 ec 0c             	sub    $0xc,%esp
+
+It looks like the program is loading the flag into the location pointed by $ebp.
+So, let's set two breakpoints, one at the main and one after the loading of the
+flags so that we can examine what the program loaded.
+Then, we can jump straight into the loading of the flag after the first breakpoint,
+and let the code run up to the second breakpoint. Then we can examine the value of
+the address pointed by $ebp-0x16.
+
+This can all be done inside gdb.
+
+gdb$ b kernel_main 
+    Breakpoint 1 at 0x100022
+gdb$ b *10008f
+    Breakpoint 2 at 0x10008f
+gdb$ r
+    Starting program: /home_users/pico61481/mystery 
+    Breakpoint 1, 0x00100022 in kernel_main ()
+gdb$ jump *100054
+    Continuing at 0x100054.
+    Breakpoint 2, 0x0010008f in kernel_main ()
+gdb$ x/s $ebp-0x16
+    0x106fee:	"K3rN3ls R C00L"
+
+Flag: K3rN3ls R C00L

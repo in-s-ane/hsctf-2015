@@ -1,0 +1,3 @@
+Brute force solution, because why not?
+
+Total: 6525731517

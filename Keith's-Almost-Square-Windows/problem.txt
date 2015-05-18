@@ -1,0 +1,27 @@
+Keith designs windows in his free time. His windows are rectangles with dimensions M cm x N cm, where M and N are positive integers. Having been a window
+aficionado for years, he believes that the best windows are those whose diagonals are also an integer number of centimeters or those that are square. He
+wants to design a window that will be most pleasing to him based on these criteria, but he knows that both conditions cannot be satisfied simultaneously.
+He is willing to make windows whose dimensions are close to square but not exactly square, namely those with dimensions M cm x (M+1) cm, since from afar,
+these look square.
+
+One day, Keith has a client who is willing to have windows with larger dimension strictly under a given value A (1 <= A <= 10^10) (The client may have a
+very large house). He wonders what kind of windows that he can make that satisfy his conditions for a pleasing window as well as the client's condition.
+Please help him compute the sum of the smaller dimensions of all the windows that satisfy all of these conditions.
+
+Input:
+
+Line 1: An integer A that represents the maximum value that the larger dimension of a pleasing window can be. Note that a pleasing window cannot have larger dimension equal
+to A.
+
+Output:
+
+One line that consists of an integer representing the sum of the smaller dimensions of all the windows that satisfy all of the conditions.
+
+Example input:
+10
+
+Example output:
+3
+
+Explanation:
+A window that is 3 cm x 4 cm satisfies the conditions, and it is fairly easy to check that this is the only solution with the larger dimension under 10.

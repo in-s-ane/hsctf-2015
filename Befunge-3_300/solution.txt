@@ -1,0 +1,4 @@
+>&2>\1-: v
+   ^*2  \_\.@
+
+Nice! The flag is 'Finally! Up and Running!'

@@ -1,0 +1,9 @@
+If we simply input the password hash given to us, we get:
+wrong bokeithisasuperawesomebossandwontbehackedna
+
+Looking at this text, we can extract somewhat of a password:
+keithisasuperawesomebossandwontbehacked
+
+Inputting this into the box we get the flag:
+
+HappyBirthday

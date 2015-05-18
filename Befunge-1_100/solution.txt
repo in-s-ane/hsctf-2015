@@ -11,4 +11,4 @@ Befunge!
 
 $ nc 104.236.80.67 5677
 >&&*.@
-Nice! The flag is 'I can has Befunge, can't I?'
+Nice! The flag is 'A Whole New Language?'

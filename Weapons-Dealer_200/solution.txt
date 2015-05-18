@@ -1,0 +1,9 @@
+As with all google sites, there's a way to view the revision history:
+https://sites.google.com/site/notarmsdealers/system/app/pages/recentChanges
+
+One of the changes was to a page called Secret Phone Number, which corresponds to what we are looking for:
+https://sites.google.com/site/notarmsdealers/totallynottheflag
+
+View this page, we get the flag.
+
+We don't know how you got here, but the phone number is (666) 913-2783

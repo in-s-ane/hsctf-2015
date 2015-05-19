@@ -1,0 +1,4 @@
+This problem requires some basic dynamic programming. See Solve.java for the
+rest of the solution.
+
+TODO add some more explanation....

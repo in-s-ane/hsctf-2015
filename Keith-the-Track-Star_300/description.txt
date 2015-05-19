@@ -1,0 +1,17 @@
+Keith the Track Star
+
+Keith is on High School Northsouth's track team. He is currently practicing hurdles, which are arranged in K lanes on the track. Keith is very fast at running,
+but there is just one problem: he can't jump hurdles. But Keith is undeterred by this problem; he can switch lanes to get out of the way of an oncoming hurdle, although
+he must slow down to do so. Of course he wants to finish in the fastest possible time, so he wants to minimize the number of times he switches lanes.
+
+The track itself can be represented by an N x K grid (N = 10^4, K = 10^2), some cells of which are occupied by hurdles and so Keith cannot occupy such cells. He starts at some lane on row 0
+of this grid and will end in some lane on row N - 1. When he is in row i and lane j, he can only move to row i+1, but he can move to lanes j-1, j, or j+1, if they exist.
+(Only lanes 0-(K-1) exist; lane -1 and lane K do not exist). Moving from row i to row i+1 but staying in lane j will take (essentially) 0 seconds, while moving to lane j-1 or
+lane j+1 will take 1 second. Given N and the locations of the hurdles in the grid, find the minimum time Keith will need (or the minimum number of lane switches Keith 
+needs to make) to start at row 0 and end on row N. High School Northsouth's track is very long and so assume that the track does not loop around on itself
+like a standard track as in the Olympics. So that there's always a place he can start or end, assume there are no hurdles in rows 0 and N - 1;
+
+The input format is as follows:
+The first line consists of three integers: N, K, and the number of hurdles, H.
+There are H lines after that. Each line corresponds to a hurdle. The first number is the row, and the second number is the lane for that hurdle.
+The output is the smallest amount of time Keith needs to take to get from some lane in row 0 to some lane in row N - 1.

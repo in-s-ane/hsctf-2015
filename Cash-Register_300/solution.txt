@@ -1,0 +1,34 @@
+Using IDA Pro, I decompiled the given binary and got some pseudocode in C.
+
+Basically, we have to sum up to 1337 in our given input with each digit in the
+input corresponding to a value to add.
+
+1: +1
+2: +10
+3: +5
+4: +100
+5: +500
+6: +20
+7: +7
+
+So, let's just do some simple number addition to get 1337.
+
+500 + 500 + 100 + 100 + 100 + 20 + 10 + 7
+
+> nc 104.236.80.67 5687
+    Welcome to the cash register at Keith's Supermarket!
+    Here is the list of items we sell at this store.
+    Each item has an associated I.D. number and cost. Please concatenate the I.D. numbers of all the items you would like to purchase and input that.
+    I.D.    Name       Cost
+    1     Potatoes     $1.00
+    2     Trash Can    $10.00
+    3     Baseball     $5.00
+    4     Cell Phone   $100.00
+    5     Laptop       $500.00
+    6     Fireworks    $20.00
+    7     Tomatoes     $7.00
+
+    55444627
+
+    Yay flag!
+    eax_is_actually_a_cash_register

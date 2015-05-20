@@ -1,0 +1,20 @@
+This sort of requires us to do the other web problems that deal with Keith, in this case, Lulzsec VS. Keith
+
+Lulzsec VS. Keith is hosted at http://104.236.80.67/LulzsecVSKeith/login.php
+
+So, why don't we try login.php for Keith Mix??
+
+http://104.236.80.67/KeithMix/login.php
+
+Looking at the source, we get at the bottom a hash: 
+<!-- Nice! Here is is: 804c8d2c39f2fedd9fce1586ebb995e86b66b52c -->
+
+Using md5hashing.net:
+http://md5hashing.net/search/all/804c8d2c39f2fedd9fce1586ebb995e86b66b52c?is_search=true#main
+
+We get the unhashed value as 'swag'
+
+Inputting that as the password, we get:
+
+Enjoy the flag....... 
+cerealsnack

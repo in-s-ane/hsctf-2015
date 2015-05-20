@@ -12,3 +12,5 @@ for o in offsets:
     flag += chr(o + add_to_each)
 
 print flag
+
+# Flag: looks_like_reversing_is_your_calling

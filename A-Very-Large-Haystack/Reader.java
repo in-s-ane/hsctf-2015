@@ -22,7 +22,7 @@ public class Reader {
                 while ((s = br1.readLine()) != null)
                     if (s.length() > 3 && new String(current).contains(s))
                         counter++;
-                if (counter > 3)
+                if (counter >= 4)
                     System.out.println(new String(current));
                 previous = current.clone();
                 br.read(current);

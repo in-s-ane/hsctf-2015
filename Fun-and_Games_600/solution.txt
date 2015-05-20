@@ -1,0 +1,43 @@
+After modifying the script, I noticed that there are a couple of ways to raise
+an exception to expose the flag.
+The first (and most obvious) is to have the num equal to the random_num(), then
+an exception will be raised by popping from an empty array.
+
+Then I noticed that when I used game_1/ instead of game_1
+
+    > python game_1/ 3 1
+        
+        Namespace(bet=3, nums=[1])
+        invalid literal for int() with base 10: ''
+        Success! You bet 3 which is less than one million so you don't win the flag.
+
+An exception was printed - invalid literal for int() with base 10: ''
+This was because game_1/ (with the forward slash) makes the program name equal
+to '' instead of game_1. However, we can only trigger that if the program fails
+the check_randomness check.
+
+The check_randomness function checks whether the generation of random numbers
+using rand_range contains a similar number of even and odd numbers.
+
+After a bit of googling, especially "random.randrange python exploit", we come
+across a recent bug report:
+    http://bugs.python.org/issue23974
+
+Looking at the bug report, we see that the number 2^53 * 2/3 gives a biased
+output in the number of evens and odds.
+
+2**53 * 2//3 = 6004799503160661
+
+So let's try it out to see if the program gives the flag since 6004799503160661
+is greater than 10**15
+
+    > python game_1/ 6004799503160661  1
+        
+        Namespace(bet=6004799503160661, nums=[1])
+        invalid literal for int() with base 10: ''
+        Success! You bet 6004799503160661 which is more than one million so you win the flag. The flag is: NOT_HERE
+
+Now, we can exploit it on the server:
+http://104.236.80.67:5003/game_1/?bet=6004799503160661&nums=1
+
+Success! You bet 6004799503160661 which is more than one million so you win the flag. The flag is: wow_you_need_to_take_a_bit_of_time_away_from_the_computer_if_you_solved_this_you_nerd_:P

@@ -1,0 +1,8 @@
+Keith has started out as an optometrist helping people with particularly odd sight disorders. One of his patients claims to have seen a mysterious warning. Can you help Keith understand what his patient saw? His patient thought he saw:
+z3otiupzom 3vizolqx3 3lqitlum z3si3z iqqizzizzim
+
+
+Read the text backwards: 
+mizzizziqqi z3is3z multiql3 3xqloziv3 mozpuito3z
+which we can manually decode to the flag:
+mississippi seizes multiple explosive mosquitoes

@@ -1,6 +1,6 @@
 If we try to decompile obfuscated_python.pyc with a decompiler, we'll get a
 bunch of errors because of the extra data that is appended to the script so that
-it can generate the flag. However, we instead of static analysis, we can perform
+it can generate the flag. However, instead of static analysis, we can perform
 dynamic analysis using a program such as ltrace to show all the library calls
 that the script makes when ran.
 

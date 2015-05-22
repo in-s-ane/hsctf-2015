@@ -101,50 +101,60 @@ signed int validate()
 
   v3 = 0;
   v4 = 0;
+  // Zero out the entire v2[]
   for ( i = 0; i <= 29; ++i )
     v2[i] = 0;
+  // Iterate through square[]
   for ( i = 0; i <= 3; ++i )
   {
     for ( j = 0; j <= 3; ++j )
     {
+      // Every number must be in (0, 30]
       if ( square[j + 4 * i] <= 0 || square[j + 4 * i] > 30 )
         return 0;
-      v0 = square[j + 4 * i] - 1;
-      ++v2[v0];
+      v0 = square[j + 4 * i] - 1; // v0 = square[current_index] - 1
+      ++v2[v0]; // Increment v2[v0] = v2[square[current_index] - 1]
+                // v2 is essentially a counter for the number of appearances of
+                // each number, where v2[0] counts the number of appearances of
+                // the number 1
     }
   }
   for ( i = 0; i <= 29; ++i )
   {
-    if ( v2[i] > 1 )
+    if ( v2[i] > 1 ) // Make sure there are no duplicate numbers
       return 0;
   }
-  for ( i = 0; i <= 3; ++i )
+  for ( i = 0; i <= 3; ++i ) // v3 is the sum of the first 4 numbers in square[]
     v3 += square[i];
   for ( i = 0; i <= 3; ++i )
   {
     v4 = 0;
     for ( j = 0; j <= 3; ++j )
       v4 += square[j + 4 * i];
-    if ( v4 != v3 )
+    if ( v4 != v3 ) // The sum of every chunk of 4 numbers is the same and equal to v3
       return 0;
   }
   for ( i = 0; i <= 3; ++i )
   {
     v4 = 0;
     for ( j = 0; j <= 3; ++j )
-      v4 += square[i + 4 * j];
-    if ( v4 != v3 )
+      v4 += square[i + 4 * j]; // 0, 4, 8, 12
+                               // 1, 5, 9, 13
+                               // 2, 6, 10, 14
+                               // 3, 7, 11, 15
+    if ( v4 != v3 ) // The sum of every 4th number starting at an offset of 0, 1, 2, and 3 is the same and equal to v3
       return 0;
   }
   v4 = 0;
   for ( i = 0; i <= 3; ++i )
-    v4 += square[5 * i];
-  if ( v4 == v3 )
+    v4 += square[5 * i]; // 0 5 10 15
+                         // v4 is the sum of the 1st, 6th, 11th, and 16th numbers
+  if ( v4 == v3 ) // v3 has to equal v4, the sum of the 1st, 6th, 11th, and 16th numbers
   {
     v4 = 0;
     for ( i = 0; i <= 3; ++i )
-      v4 += square[4 * i + 3 - i];
-    if ( v4 == v3 )
+      v4 += square[4 * i + 3 - i]; // 3 6 9 12
+    if ( v4 == v3 ) // Sum of the 4th, 7th, 10th, and 13th numbers equals v3
     {
       for ( i = 0; i <= 3; ++i )
       {
@@ -152,12 +162,17 @@ signed int validate()
         v4 = 0;
         for ( j = 0; j <= 3; ++j )
         {
-          v4 += square[v7-- + 4 * j];
+          v4 += square[v7-- + 4 * j]; // 0 7 10 13
+                                      // 1 4 11 14
+                                      // 2 5 8 15
+                                      // 3 6 9 12
           if ( v7 < 0 )
             v7 = 3;
         }
-        if ( v4 != v3 )
-          return 0;
+        if ( v4 != v3 ) // 1st + 8th + 11th + 14th = v3
+          return 0;     // 2nd + 5th + 12th + 15th = v3
+                        // 3rd + 6th + 9th + 16th = v3
+                        // 4th + 7th + 10th + 13th = v3
       }
       for ( i = 0; i <= 3; ++i )
       {
@@ -165,14 +180,20 @@ signed int validate()
         v4 = 0;
         for ( j = 0; j <= 3; ++j )
         {
-          v4 += square[v8++ + 4 * j];
+          v4 += square[v8++ + 4 * j]; // 0 5 10 15
+                                      // 1 6 11 12
+                                      // 2 7 8 13
+                                      // 3 4 9 14
           if ( v8 > 3 )
             v8 = 0;
         }
-        if ( v4 != v3 )
+        if ( v4 != v3 ) // 1st + 6th + 11th + 16th = v3
+                        // 2nd + 7th + 12th + 13th = v3
+                        // 3rd + 8th + 9th + 14th = v3
+                        // 4th + 5th + 10th + 15th = v3
           return 0;
       }
-      result = 1;
+      result = 1; // YAY!
     }
     else
     {
@@ -215,7 +236,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
     for ( i = 0; i <= 3; ++i )
     {
       for ( j = 0; j <= 3; ++j )
-        square[j + 4 * i] = strtol(argv[j + 4 * i + 1], 0, 10);
+        square[j + 4 * i] = strtol(argv[j + 4 * i + 1], 0, 10); // Copy the 16 numbers to square[]
     }
     if ( validate() )
       give_flag();

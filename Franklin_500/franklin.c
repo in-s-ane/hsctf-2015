@@ -131,7 +131,7 @@ signed int validate()
     v4 = 0;
     for ( j = 0; j <= 3; ++j )
       v4 += square[j + 4 * i];
-    if ( v4 != v3 ) // The sum of every chunk of 4 numbers is the same and equal to v3
+    if ( v4 != v3 ) // The sum of every row of 4 numbers is equal to v3
       return 0;
   }
   for ( i = 0; i <= 3; ++i )
@@ -142,25 +142,25 @@ signed int validate()
                                // 1, 5, 9, 13
                                // 2, 6, 10, 14
                                // 3, 7, 11, 15
-    if ( v4 != v3 ) // The sum of every 4th number starting at an offset of 0, 1, 2, and 3 is the same and equal to v3
-                    // 1st + 5th + 9th + 13th = v3
-                    // 2nd + 6th + 10th + 14th = v3
-                    // 3rd + 7th + 11th + 15th = v3
-                    // 4th + 8th + 12th + 16th = v3
+    if ( v4 != v3 ) // The sum of every column of 4 numbers is equal to v3
       return 0;
   }
   v4 = 0;
   for ( i = 0; i <= 3; ++i )
     v4 += square[5 * i]; // 0 5 10 15
                          // v4 is the sum of the 1st, 6th, 11th, and 16th numbers
+                         // v4 is the sum of the numbers on the diagonal from
+                         // top left
   if ( v4 == v3 ) // v3 has to equal v4, the sum of the 1st, 6th, 11th, and 16th numbers
-                  // 1st + 6th + 11th + 16th = v3
+                  // v3 has to equal v4, the sum of the numbers on the diagonal
   {
     v4 = 0;
     for ( i = 0; i <= 3; ++i )
       v4 += square[4 * i + 3 - i]; // 3 6 9 12
+                                   // v4 is the sum of the numbers on the diagonal
+                                   // from the top right
     if ( v4 == v3 ) // Sum of the 4th, 7th, 10th, and 13th numbers equals v3
-                    // 4th + 7th + 10th + 13th = v3
+                    // v3 has to equal v4, the sum of the numbers on the diagonal
     {
       for ( i = 0; i <= 3; ++i )
       {
@@ -179,6 +179,7 @@ signed int validate()
           return 0;     // 2nd + 5th + 12th + 15th = v3
                         // 3rd + 6th + 9th + 16th = v3
                         // 4th + 7th + 10th + 13th = v3
+                        // AKA diagonals to the left are equal to v3
       }
       for ( i = 0; i <= 3; ++i )
       {
@@ -197,6 +198,7 @@ signed int validate()
                         // 2nd + 7th + 12th + 13th = v3
                         // 3rd + 8th + 9th + 14th = v3
                         // 4th + 5th + 10th + 15th = v3
+                        // AKA diagonals to the right are equal to v3
           return 0;
       }
       result = 1; // YAY!

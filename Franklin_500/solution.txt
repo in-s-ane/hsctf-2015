@@ -1,0 +1,28 @@
+We first disassembled the code using IDA Pro to get some pseudo C code.
+
+Then, we did a bit of annotation on the code until we realized that
+the code was just asking for 16 numbers to represent a 4x4 square. It
+checks whether each row, column, and diagonal (even diagonals that wrap
+around the square grid) are equal to the same number.
+
+This reminded me of problems that I did back in 3rd grade where we got
+a 3x3 grid that had to have every row, column, and diagonal add up to 15.
+So, let's search it up:
+    http://en.wikipedia.org/wiki/Magic_square
+
+On the wikipedia page, we were lucky to get a already solved 4x4 grid.
+
+7   12  1   14
+2   13  8   11
+16  3   10  5
+9   6   15  4
+
+> nc 104.236.80.67 5689
+    7;12;1;14;2;13;8;11;16;3;10;5;9;6;15;4
+    Yay, you got it!
+    ben_franklin_was_mah_homie
+
+And that's the flag: ben_franklin_was_mah_homie
+Related: https://www.sciencenews.org/article/benjamin-franklin-plays-sudoku
+
+Tags: #teamwork #chesleydanny

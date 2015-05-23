@@ -1,0 +1,33 @@
+As Keith sets off to take over the world, he leaves his computer in the care of his N (1<=N<=20) assistants. His computer has a set of X passwords and can be opened only when all X passwords are entered correctly.  
+
+Say that a set of assistants is trustworthy if Keith will allow his computer to be opened when everyone in that set is present; obviously, any set of assistants that contains a trustworthy set is also trustworthy.  Keith has a list of trustworthy sets of assistants and distributes passwords to his assistants so that 
+    - any trustworthy set of assistants collectively knows all the passwords,
+    - no non-trustworthy set of assistants knows all the passwords.  
+
+Given Keith's list of trustworthy sets, determine the minimum possible value of X.  
+
+Input format:
+Line 1: Two integers N, M, representing the number of assistants Keith has and the number of entries in his list of trustworthy sets. 
+Lines 2 to M+1: A line consisting of a number k, followed by k distinct integers from 1 to N representing a trustworthy set.
+
+The flag is the minimum number of passwords for the input file provided.  
+
+Example input:
+4 9
+4 1 2 3 4
+3 1 2 3
+3 1 2 4
+3 1 3 4
+3 2 3 4
+2 1 2
+2 1 3
+2 1 4
+
+Example flag: 4
+
+Explanation:
+Distribute the 4 passwords as follows:
+Assistant 1: passwords 1, 2, 3
+Assistant 2: passwords 1, 4
+Assistant 3: passwords 2, 4
+Assistant 4: passwords 3, 4

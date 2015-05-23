@@ -38,3 +38,4 @@ ehthumbs.db
 
 a.out
 *.pyc
+*.class

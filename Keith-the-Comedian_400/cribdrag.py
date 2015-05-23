@@ -52,7 +52,17 @@ while offset < (165-10):
         mapping.append((letter_to_26('C'), ciphertext[offset+8]))
         mapping.append((letter_to_26('K'), ciphertext[offset+9]))
     else:
-        continue
+        mapping.append((letter_to_26('O'), ciphertext[offset+2]))
+        mapping.append((letter_to_26('C'), ciphertext[offset+3]))
+        mapping.append((letter_to_26('K'), ciphertext[offset+4]))
+        mapping.append((letter_to_26('K'), ciphertext[offset+5]))
+        mapping.append((letter_to_26('N'), ciphertext[offset+6]))
+        mapping.append((letter_to_26('O'), ciphertext[offset+7]))
+        mapping.append((letter_to_26('C'), ciphertext[offset+8]))
+        mapping.append((letter_to_26('K'), ciphertext[offset+9]))
+        # This letter is a guess
+        mapping.append((letter_to_26('W'), ciphertext[offset+10]))
+
     var('a', 'b', 'c')
     system1_solution = solve_mod([
             mapping[0][0]*a + mapping[1][0]*b + mapping[2][0]*c == mapping[0][1],

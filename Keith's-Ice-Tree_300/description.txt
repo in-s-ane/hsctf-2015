@@ -1,0 +1,25 @@
+In the future, scientists have secretly developed a way to give people cryokinetic powers (the power to create and move ice and snow), and Keith is one of the
+first testers for this new power. Since this power is new and unknown to the public, Keith fears that if his powers are known to the world, he will be
+labeled a freak and ostracized by society. Thus, he has kept his powers a secret from everyone, including his dear sister Kanna, by shutting himself in his
+room and keeping his powers in check with a Chinese fingertrap. Unfortunately, at a large party, Keith's powers are revealed after Kanna asks for
+Keith's approval to marry a man named Khans, and then bursts into an outrage when Keith rejects her request, citing that Kanna knows nothing about true love.
+Kanna continues to pester him, until he accidentally reveals his powers to the whole party. In his panic, he runs out of the party and across a fjord (which
+he freezes with his footsteps) to the mountains overlooking the party venue. On the mountain, liberated, Keith belts into song and constructs a giant binary
+tree out of ice, with N (1 <= N <= 1500) nodes and decides to stay in it forever.
+
+Meanwhile, Kanna, guilty about having caused Keith to run away, dashes off on her horse to find Keith, leaving Khans in charge of the party. Along her way,
+she glances up at the mountain and sees a connected subtree of Keith's ice binary tree. She briefly wonders how many possible connected subtree she could
+have seen, before continuing her trek up to Keith's mountain. Given a list of N lines that each describe a node of the tree as well as its children, please
+compute the answer to Kanna's question. As the answer may be very large, provide the remainder of this number when divided by 1000000007 (10^9 + 7).
+
+Input:
+
+Line 1: An integer N describing the number of nodes in the tree.
+Lines 2 - N+1: Each line is of the form "A B C", where B and C are the numbers of the left child and right child, respectively, of the node numbered A. If B = 0, then
+A has no left child. Likewise, if C = 0, A has no right child. If B = C = 0, then A has no children. A, B, C are guaranteed to be between 1 and N, inclusive. The parent
+node of the first line is guaranteed to be the root of the tree.
+
+Output:
+
+One line that contains the remainder of X mod 10^9 + 7, where X is the number of connected subtrees of the tree described by the lines in the input. Note that the subtrees
+may have a root that is not the root of the whole tree, or that the subtrees may be only one node.

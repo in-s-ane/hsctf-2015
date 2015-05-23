@@ -1,0 +1,16 @@
+https://www.google.com/#q=what+must+i+plant+13+holes+in+a+log+by+replacing+book+ways+of+the+log
+
+After a lot of googling, I got to a page documenting The Holy Log.
+
+http://wolfgirl17946.deviantart.com/journal/The-Holy-Log-271066610
+
+In one of the lines, it states:
+For every hole in the log caused by your replacement you shall plant ten saplings.
+
+The problem description is:
+Keith has discovered a strange cult based around a log of all things! He needs you to answer this question based on its teachings:
+If I create 13 holes in a log by replacing with it, what must I plant?
+
+So if we create 13 holes, we must plant 13*10 saplings.
+
+That's the flag: 130 saplings

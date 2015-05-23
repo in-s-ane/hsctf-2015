@@ -22,11 +22,18 @@ step_3 = ''.join(step_3)
 with open("modified3.txt", "w") as m:
     m.write(step_3)
 
-'doallthatonemoretimetogettheanswer'
+'nowdoallthatonemoretimetogettheanswer'
 
 step_4 = [chr((ord(step_3[i])-ord('a') + ord(step_3[i+1])-ord('a'))%26 + ord('a')) for i in range(0, len(step_3)-1, 2)]
 step_4 = ''.join(step_4)
 with open("modified4.txt", "w") as m:
     m.write(step_4)
 
-# Nothing works after step_3 :(
+# This was added after I solved the problem... but I should've realized that I could search for terms from previous haystacks... like 'character'
+with open("modified4.txt") as f:
+    while True:
+        text = f.read(68)
+        if "character" in text:
+            print text
+
+# Flag: thesecharactersarethegatewaytokinglyglory

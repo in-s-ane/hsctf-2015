@@ -1,0 +1,36 @@
+Keith has stumbled upon a mysterious dashboard, which is in the form of an infinite row of lights marked 0, 1, 2, 3, 4, ... to infinity.  All the lights on the dashboard can be either on or off at any given moment.  Initially, all the lights are off except J (1 <= J <= 1000) lights. 
+
+The lights change state every minute according to the following rule: the light marked k is on if and only if exactly one or three of the lights marked k-3, k-2, k-1, k are on the previous minute.  
+
+After N (1 <= N <= 600,000,000) minutes, Keith would like to know the states of a certain set of M lights (1<=M<=2000).  
+
+The flag is the output to the given input file.  
+
+INPUT FORMAT
+
+Line 1: three integers, N, M, and J
+Line 2: J integers corresponding to the lights that are initially on.
+Line 3: M integers corresponding to the lights whose states Keith is querying.  
+
+OUTPUT FORMAT
+
+The sum of the indices of the queries in which the requested light is on. 
+
+EXAMPLE INPUT
+
+2 4 3
+0 1 4
+2 4 6 8
+
+EXAMPLE OUTPUT
+5
+
+EXPLANATION
+
+The lights that are on at each minute are as follows:
+
+Minute 0: 0 1 4
+Minute 1: 0 5 6 7
+Minute 2: 0 1 2 3 5 7 8 10
+
+Lights 2 and 8, which are the first and fourth queries, are on.  Therefore, the answer is 1+4=5.  

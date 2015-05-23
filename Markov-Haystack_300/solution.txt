@@ -1,0 +1,14 @@
+Using the python script, I was able to count the frequency of the appearances of
+words. Even when using Markov Chains, and with a data set of such a large size,
+there should've been at least 100 of each word. However, in the count, I noticed
+that there was only a single instance of 'Solution', 'logic"', and 'spaces.'
+
+> python frequency.py
+'logic"': 1, 'spaces.': 1, 'Solution': 1
+
+So, let's grep the file for this:
+
+> cat markovhaystack.txt | grep "Solution"
+    Solution of this problem is "computer science logic" with no spaces.
+
+Flag: computersciencelogic

@@ -1,48 +1,11 @@
-# A general purpose Hill Cipher cracker using crib dragging of a known
-# plaintext. Supports 3x3 key matrices.
+# Modified version of the general purpose cribdrag.py
 import sys
-trans_letter_to_num = {
-        'A' : 0,
-        'B' : 1,
-        'C' : 2,
-        'D' : 3,
-        'E' : 4,
-        'F' : 5,
-        'G' : 6,
-        'H' : 7,
-        'I' : 8,
-        'J' : 9,
-        'K' : 10,
-        'L' : 11,
-        'M' : 12,
-        'N' : 13,
-        'O' : 14,
-        'P' : 15,
-        'Q' : 16,
-        'R' : 17,
-        'S' : 18,
-        'T' : 19,
-        'U' : 20,
-        'V' : 21,
-        'W' : 22,
-        'X' : 23,
-        'Y' : 24,
-        'Z' : 25,
-        ' ' : 26,
-        ',' : 27,
-        '.' : 28,
-        '?' : 29,
-        '!' : 30,
-            }
-
-trans_num_to_letter = {v: k for k, v in trans_letter_to_num.items()}
-print trans_num_to_letter
 
 def letter_to_num(c):
-    return trans_letter_to_num[c]
+    return ord(c)
 
 def num_to_letter(n):
-    return trans_num_to_letter[n]
+    return chr(n%128)
 
 def generate_keys(system1_solution, system2_solution, system3_solution):
     keys = []
@@ -59,15 +22,14 @@ def text_mat_to_str(m):
             text += num_to_letter(int(m[r][c]))
     return text
 
-modulo = len(trans_num_to_letter)
+modulo = 128
 
 print "Modulo: " + str(modulo)
 
-KPT = "KNOCK, KNOCK"
-# Proof of Concept
-ciphertext = "NPWFWDQPDBSLMLCJVUX,D!!FTEF!FDFDCSNU!!FLWYSIOFU?IG,CSSA!,"
-ciphertext = list(ciphertext)
-ciphertext = [letter_to_num(x) for x in ciphertext]
+KPT = "Knock, knock!"
+ciphertext = "1 232 92 231 59 226 115 31 51 68 53 51 147 218 52 234 17 234 54 144 241 13 49 149 155 247 168 88 22 177 20 238 205 3 86 155 182 240 18 211 121 35 215 3 123 110 108 157 109 229 21 9 166 254 119 238 173 44 142 121 3 86 155 95 42 227 107 102 67 35 193 187 118 112 207 87 254 87 113 131 54 71 243 7 180 100 84 108 100 25 199 5 103 15 170 114 159 203 136 132 155 43 83 66 237 217 2 159 126 60 27 101 181 69 142 45 199 242 180 99 111 158 219 6 174 230 91 127 4 61 151 158 180 100 84 135 222 232 223 81 56 85 63 57 246 92 119 237 196 252 158 143 105 150 131 173 183 226 102 141 240 199 63 82 233"
+ciphertext = ciphertext.split(' ')
+ciphertext = [int(x) % modulo for x in ciphertext]
 ciphertext_blocks = []
 for x in xrange(0, len(ciphertext) - 2, 3):
     ciphertext_blocks.append([ciphertext[x], ciphertext[x+1], ciphertext[x+2]])
@@ -153,3 +115,5 @@ for offset in range(len(ciphertext)-len(KPT)+1):
             pass
 
 
+# Knock, knock! Who's there? An Ant Hill. I don't have an Aunt Hill! Hahahah
+# (Humor of the 2050s was weird). Well, anyway, the flag is: that_aunt_hill_joke_was_horrible

@@ -3,12 +3,12 @@ import java.io.*;
 import java.lang.Math;
 
 public class Solve {
-    public static boolean binSearch(ArrayList<Integer> l, int i) {
+    public static boolean binSearch(ArrayList<Long> l, long i) {
         int low = 0;
         int high = l.size() - 1;
         while (low <= high) {
             int mid = (low + high) / 2;
-            int midEl = l.get(mid);
+            long midEl = l.get(mid);
             if (midEl < i) {
                 low = mid + 1;
             }
@@ -25,28 +25,28 @@ public class Solve {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("input.txt"));
         String[] data = in.readLine().split(" ");
-        int numMinutes = Integer.parseInt(data[0]);
-        int[] trackingLights = new int[Integer.parseInt(data[1])];
-        ArrayList<Integer> lightsOn = new ArrayList<Integer>();
+        long numMinutes = Long.parseLong(data[0]);
+        long[] trackingLights = new long[Integer.parseInt(data[1])];
+        ArrayList<Long> lightsOn = new ArrayList<Long>();
         data = in.readLine().split(" ");
         for (int i = 0; i < data.length; ++i) {
-            lightsOn.add(Integer.parseInt(data[i]));
+            lightsOn.add(Long.parseLong(data[i]));
         }
         data = in.readLine().split(" ");
         for (int i = 0; i < data.length; ++i) {
-            trackingLights[i] = Integer.parseInt(data[i]);
+            trackingLights[i] = Long.parseLong(data[i]);
         }
         System.out.println("Num minutes: " + numMinutes);
         System.out.println("Initial lights: " + lightsOn.toString());
         System.out.println("Tracking lights: " + Arrays.toString(trackingLights));
-        for (int minute = 0; minute < numMinutes; ++minute) {
-            ArrayList<Integer> newLightsOn = new ArrayList<Integer>();
+        for (int minute = 1; minute <= numMinutes; ++minute) {
+            ArrayList<Long> newLightsOn = new ArrayList<Long>();
             int k_3 = 0;
             int k_2 = 0;
             int k_1 = 0;
             int k = binSearch(lightsOn, 0) ? 1 : 0;
-            int upperLimit = lightsOn.get(lightsOn.size() - 1) + 4;
-            for (int i = 0; i < upperLimit; ++i) {
+            long upperLimit = lightsOn.get(lightsOn.size() - 1) + 4;
+            for (long i = 0; i < upperLimit; ++i) {
                 int numPrecedingOn = k_3+k_2+k_1+k;
                 k_3 = k_2;
                 k_2 = k_1;
@@ -57,8 +57,37 @@ public class Solve {
                 }
             }
             lightsOn = newLightsOn;
-            if ((minute+1) % 1000 == 0) {
-                System.out.println("Minute: " + Integer.toString(minute+1));
+            // Rules:
+            // Every 5000 minutes, the last light increases by 15000
+            // Every 6400 minutes, the last light increases by 19200
+            // The last 46 numbers are the same every time
+            // Every 64 minutes, I know the last 46 numbers
+            // Every 12800 minutes, I know the last 100 numbers
+            // Formula for the last light at each cycle:
+            // Last light = 9984 + (minute * 3)
+            // At 25622 minutes, the last light is 86850
+            // At 32022 minutes, the last light is 106050
+            // Let's treat blocks as diffs from the starting number and the
+            // ending number (calculable)
+            // At 6422 (22 * 6400 * 1), we have two identical blocks separated by 3519
+            // At 12822 (22 * 6400 * 2), we have two identical blocks separated by 17087
+            if ((minute-22) % 6400 == 0) {
+                int lightsSize = lightsOn.size();
+                int index = lightsSize;
+                long lastLight = lightsOn.get(lightsSize-1);
+                long last = lightsOn.get(0);
+                System.out.print("[");
+                for (Long l : lightsOn) {
+                    System.out.print(Long.toString(l-last) + ", ");
+                    last = l;
+                }
+                System.out.print("]\n");
+                //for (index = lightsSize-200; index < lightsSize; ++index) {
+                //    System.out.print(Long.toString(lightsOn.get(index)) + ", ");
+                //}
+                System.out.println("Minute: " + Long.toString(minute));
+                System.out.println("Lights on: " + Long.toString(lightsSize));
+                System.out.println("Last light: " + Long.toString(lastLight));
             }
             //System.out.println("Lights on: " + lightsOn.toString());
         }
@@ -67,7 +96,7 @@ public class Solve {
             if (binSearch(lightsOn, trackingLights[i]))
                 sum += i + 1;
         }
-        System.out.println("Answer: " + Integer.toString(sum));
+        System.out.println("Answer: " + Long.toString(sum));
     }
 }
 

@@ -15,10 +15,12 @@ for r in range(height):
     for c in range(width):
         p = logo_pixels[r,c]
         k = keith_pixels[r,c]
-        diff = ((p[0]-k[0])**2 + (p[0]-k[0])**2 + (p[0]-k[0])**2) ** .5
-        #difference_pixels[r,c] = BLACK if diff > 1.8 else WHITE
+        diff = ((p[0]-k[0])**2 + (p[1]-k[1])**2 + (p[2]-k[2])**2) ** .5
+        difference_pixels[r,c] = BLACK if diff > 1.8 else WHITE
+        '''
         difference_pixels[r,c] = (0 if abs(p[0]-k[0]) > 2 else 255,
                                   0 if abs(p[1]-k[1]) > 2 else 255,
                                   0 if abs(p[2]-k[2]) > 2 else 255)
+        '''
 
 difference.save("difference.png")

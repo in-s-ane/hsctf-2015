@@ -10,7 +10,13 @@ The trace will pause when we are prompted for a password.
 If we scroll up a little, we'll find library calls that use the string
 containing the flag!
 
-memcpy(0x7f5a8bd5d894, "The flag is: python_can_be_obfuscated_a_bit_i_guess", 51)     
+memcpy(0x7f5a8bd5d894, "The flag is: python_can_be_obfuscated_a_bit_i_guess", 51)
                                  = 0x7f5a8bd5d894
+
+The flag is: python_can_be_obfuscated_a_bit_i_guess
+
+Alternatively... (Courtesy of Jacob Edelman)
+python -i obfuscated_python.pyc
+>>> print globals()
 
 The flag is: python_can_be_obfuscated_a_bit_i_guess

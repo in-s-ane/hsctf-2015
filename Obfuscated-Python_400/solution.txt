@@ -1,16 +1,4 @@
-If we try to decompile obfuscated_python.pyc with a decompiler, we'll get a
-bunch of errors because of the extra data that is appended to the script so that
-it can generate the flag. However, instead of static analysis, we can perform
-dynamic analysis using a program such as ltrace to show all the library calls
-that the script makes when ran.
-
-ltrace -s 100 python2 obfuscated_python.pyc
-
-The trace will pause when we are prompted for a password.
-If we scroll up a little, we'll find library calls that use the string
-containing the flag!
-
-memcpy(0x7f5a8bd5d894, "The flag is: python_can_be_obfuscated_a_bit_i_guess", 51)     
-                                 = 0x7f5a8bd5d894
+python -i obfuscated_python.pyc
+>>> print globals()
 
 The flag is: python_can_be_obfuscated_a_bit_i_guess

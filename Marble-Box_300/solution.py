@@ -2,7 +2,7 @@ import socket
 import struct
 
 HOST = "104.236.80.67"
-PORT = 5683
+PORT = 5692
 
 def pack(p):
     return struct.pack('<I', p)

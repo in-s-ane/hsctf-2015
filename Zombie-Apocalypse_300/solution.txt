@@ -3,7 +3,7 @@ easier than I thought. All I had to do was overflow the name into the height,
 inside the zombie struct.
 
 So, let's first connect:
-nc 104.236.80.67 5684
+nc 104.236.80.67 5693
 
 Then in the name field, we'll overflow it with f's since that is going to max
 out the height field. All we need is a name longer than 25 characters plus 4

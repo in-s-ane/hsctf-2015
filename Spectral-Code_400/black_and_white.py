@@ -3,13 +3,13 @@
 import sys
 from PIL import Image
 
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
+WHITE = (255, 255, 255, 255)
+BLACK = (0, 0, 0, 255)
 
 def read(img):
     image = Image.open(img)
     image_pixels = image.load()
-    bw = Image.new('RGB', image.size, (255, 255, 255))
+    bw = Image.new('RGBA', image.size, (255, 255, 255, 255))
     bw_pixels = bw.load()
 
     height, width = image.size

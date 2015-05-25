@@ -1,26 +1,41 @@
-from PIL import Image
+dependencies_loaded = False
+try:
+    from PIL import Image
+    import zbar
+    '''
+    If the above segfaults, which it will most likely do on OSX, install python zbar like this:
+    > pip install git+https://github.com/npinchot/zbar.git --upgrade
+    Credeits to http://stackoverflow.com/questions/21612908/zbar-python-crashes-on-import-osx-10-9-1
+    '''
+    dependencies_loaded = True
+except:
+    dependencies_loaded = False
 
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-
-image = Image.open("946px-Emission_spectrum-Fe.svg.png-BW.png")
+image = Image.open("946px-Emission_spectrum-Fe.svg-cropped.png")
 image_pixels = image.load()
-spectro = Image.open("spectralcode-cropped.png")
+spectro = Image.open("spectralcode.png")
 spectro_pixels = spectro.load()
-difference = Image.new('RGB', image.size, (255, 255, 255))
+difference = Image.new('RGBA', image.size, (255, 255, 255, 255))
 difference_pixels = difference.load()
 
 height, width = image.size
 for r in range(height):
     for c in range(width):
-        p = image_pixels[r,c]
-        k = spectro_pixels[r,c]
-        diff = ((p[0]-k[0])**2 + (p[0]-k[0])**2 + (p[0]-k[0])**2) ** .5
-        difference_pixels[r,c] = BLACK if diff > 441 else WHITE
-        '''
-        difference_pixels[r,c] = (0 if abs(p[0]-k[0]) > 2 else 255,
-                                  0 if abs(p[1]-k[1]) > 2 else 255,
-                                  0 if abs(p[2]-k[2]) > 2 else 255)
-        '''
+        k = image_pixels[r,c]
+        p = spectro_pixels[r,c]
+        difference_pixels[r,c] = (abs(p[0]-k[0]), abs(p[1]-k[1]), abs(p[2]-k[2]), abs(p[3]-k[3]))
+        print k, p, difference_pixels[r,c]
 
 difference.save("difference.png")
+
+if dependencies_loaded:
+    scanner = zbar.ImageScanner()
+    scanner.parse_config('enable')
+    image = Image.open("difference.png").convert('L')
+    width, height = image.size
+    raw = image.tostring()
+    barcode = zbar.Image(width, height, 'Y800', raw)
+    scanner.scan(barcode)
+    for symbol in barcode:
+        print 'Decoded', symbol.type, 'symbol:', '"%s"' % symbol.data
+    del(image)
